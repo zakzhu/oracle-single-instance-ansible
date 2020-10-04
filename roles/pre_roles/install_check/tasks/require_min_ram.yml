@@ -1,0 +1,11 @@
+---
+# References:
+# - [Server Hardware Checklist for Oracle Database Installation](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ladbi/server-hardware-checklist-for-oracle-database-installation.html#GUID-D311E770-9444-45D0-A122-6491D1B66B8A)
+#
+# Minimum RAM:
+# - At least 1 GB RAM for Oracle Database installations. 2 GB RAM recommended.
+# - At least 8 GB RAM for Oracle Grid Infrastructure installations.
+- name: <pr_r_install_check_t_require_min_ram> determine whether the system memory is greater than 1GB
+  fail:
+    msg: "At least 1 GB RAM for Oracle Database installations. 2 GB RAM recommended." # not required. The customized message used for failing execution. If omitted, fail will simply bail out with a generic message.
+  when: (mem_total_byte | int) < (_1_GB_TO_BYTE | int)

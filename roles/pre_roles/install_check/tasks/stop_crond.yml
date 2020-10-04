@@ -1,0 +1,17 @@
+---
+# References:
+# - [Installer Planning Checklist for Oracle Database](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ladbi/installer-planning-checklist-for-oracle-database-installation.html#GUID-757A795E-0184-44BE-86FF-3BD1047F93A2)
+#
+# Ensure cron jobs do not run during installation:
+# If the installer is running when daily cron jobs start, then
+# you may encounter unexplained installation problems if your cron job is performing cleanup,
+# and temporary files are deleted before the installation is finished.
+# Oracle recommends that you complete installation before daily cron jobs are run, or
+# disable daily cron jobs that perform cleanup until after the installation is completed.
+- name: <pr_r_install_t_stop_crond> ensure cron jobs don't run during installation
+  systemd:
+    name: crond
+    # Choices: reloaded, restarted, started, stopped
+    state: stopped
+    #enabled:
+    #daemon_reload: yes

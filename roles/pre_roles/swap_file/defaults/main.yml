@@ -1,0 +1,25 @@
+---
+# defaults file for swap_file
+
+# FROM TASK: <pr_r_swap_file_t_common> set up a swap file
+# References:
+# - [Server Configuration Checklist for Oracle Database Installation](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ladbi/server-configuration-checklist-for-oracle-database-installation.html#GUID-CD4657FB-2DDC-4B30-AAB4-2C927045A86D)
+#
+# Swap space allocation relative to RAM (Oracle Database)
+# Between 1 GB and 2 GB: 1.5 times the size of the RAM
+# Between 2 GB and 16 GB: Equal to the size of the RAM
+# More than 16 GB: 16 GB
+# Note: If you enable HugePages for your Linux servers, then you should deduct the memory allocated to HugePages from the available RAM before calculating swap space.
+mem_total_mb: "{{ ansible_facts['memtotal_mb'] }} MB"
+mem_total_byte: "{{ mem_total_mb | human_to_bytes }}"
+_1_GB_TO_BYTE: 1073741824
+_2_GB_TO_BYTE: 2147483648
+_16_GB_TO_BYTE: 17179869184
+swap_size: |-
+  {%- if (mem_total_byte | int) >= _1_GB_TO_BYTE and (mem_total_byte | int) <= _2_GB_TO_BYTE -%}
+  {{ ((mem_total_byte | float)*1.5) | int }}
+  {%- elif (mem_total_byte | int) > _2_GB_TO_BYTE and (mem_total_byte | int) <= _16_GB_TO_BYTE -%}
+  {{ mem_total_byte }}
+  {%- else -%}
+  {{ _16_GB_TO_BYTE }}
+  {%- endif -%}

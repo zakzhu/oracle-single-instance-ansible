@@ -1,0 +1,19 @@
+---
+# defaults file for pre_roles/common
+
+# FROM TASK: <pr_r_common_t_common> be failed when the os not supported
+supported_os:
+  desktop:
+    # - Fedora
+  server:
+    - CentOS-7
+    # - CentOS-8
+
+# FROM TASK: <pr_r_common_t_common> set start stats
+date_cmd: "date +'%Y-%m-%d %H:%M:%S'"
+start_stats:
+  data:
+    play: "{{ ansible_play_name }}"
+    playbook_dir: "{{ playbook_dir }}"
+    status: 0
+    start: "{{ lookup('pipe', '{{ date_cmd }}') }}"

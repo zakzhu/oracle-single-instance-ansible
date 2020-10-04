@@ -1,0 +1,10 @@
+---
+# tasks file for install_check
+
+- import_tasks: require_min_ram
+  tags:
+    - pr_r_install_check_t_require_min_ram
+
+- import_tasks: stop_crond
+  tags:
+    - pr_r_install_t_stop_crond

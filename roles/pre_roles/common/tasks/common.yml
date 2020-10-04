@@ -1,0 +1,17 @@
+---
+- name: <pr_r_common_t_common> be failed when the os not supported
+  fail:
+    msg: "The operating system is not supported!"
+  vars:
+    os_distro: "{{ ansible_facts['distribution'] }}"
+    os_distro_major_version: "{{ ansible_facts['distribution_major_version'] }}"
+    os_version: "{{ os_distro }}-{{ os_distro_major_version }}"
+  when:
+    - os_distro not in supported_os.desktop
+    - os_version not in supported_os.server
+
+- name: <pr_r_common_t_common> set start stats
+  set_stats:
+    data: "{{ start_stats }}" # required. A dictionary of which each key represents a stat (or variable) you want to keep track of
+    aggregate: true # not required. boolean that indicates if the provided value is aggregated to the existing stat C(yes) or will replace it C(no)
+    per_host: true # not required. boolean that indicates if the stats is per host or for all hosts in the run.
