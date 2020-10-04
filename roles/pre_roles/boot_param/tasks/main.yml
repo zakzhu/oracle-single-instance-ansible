@@ -3,4 +3,4 @@
 
 - import_tasks: common.yml
   tags:
-    - r_boot_param_t_common
+    - pr_r_boot_param_t_common
