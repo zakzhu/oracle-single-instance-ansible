@@ -1,0 +1,9 @@
+---
+- name: <r_pkg_reqs_t_common> install required packages
+  yum:
+    name: "{{ item }}"
+    state: present
+    disable_gpg_check: yes
+    disable_plugin: fastestmirror
+    #allow_downgrade: yes
+  loop: "{{ required_packages }}"

@@ -1,0 +1,6 @@
+---
+# tasks file for pkg_reqs
+
+- import_tasks: common.yml
+  tags:
+    - r_pkg_reqs_t_common

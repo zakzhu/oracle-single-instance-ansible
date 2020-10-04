@@ -1,0 +1,57 @@
+---
+# defaults file for pkg_reqs
+# References:
+# - [Supported Red Hat Enterprise Linux 7 Distributions for x86-64](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ladbi/supported-red-hat-enterprise-linux-7-distributions-for-x86-64.html#GUID-2E11B561-6587-4789-A583-2E33D705E498)
+# - [Additional Drivers and Software Packages for Linux](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ladbi/additional-drivers-and-software-packages-for-linux.html#GUID-F09C1AE2-FEE2-42A6-BEEF-289251413841)
+# - [Checking Kernel and Package Requirements for Linux](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ladbi/checking-kernel-and-package-requirements-for-linux.html#GUID-7065A86D-C2AB-4731-953B-12AC25C94156)
+#
+# FROM TASK: <r_pkg_reqs_t_common> install required packages
+required_packages:
+  - autoconf
+  - automake
+  - bc
+  - bind-utils
+  - binutils
+  - bison
+  - bzip2
+  - compat-gcc-44
+  - compat-gcc-44-c++
+  - compat-libcap1-1.10-*.el7.x86_64
+  - compat-libstdc++-33-3.2.3-*.el7.i686
+  - compat-libstdc++-33-3.2.3-*.el7.x86_64
+  - cpp
+  - dos2unix
+  - gcc
+  - gcc-c++
+  - glibc-2.17-*.el7.i686
+  - glibc-2.17-*.el7.x86_64
+  - glibc-devel-2.17-*.el7.i686
+  - glibc-devel-2.17-*.el7.x86_64
+  - glibc-utils
+  - ksh
+  - libaio-0.3.109-*.el7.i686
+  - libaio-0.3.109-*.el7.x86_64
+  - libaio-devel-0.3.109-*.el7.i686
+  - libaio-devel-0.3.109-*.el7.x86_64
+  - libgcc-4.8.5-*.el7.i686
+  - libgcc-4.8.5-*.el7.x86_64
+  - libstdc++-4.8.5-*.el7.i686
+  - libstdc++-4.8.5-*.el7.x86_64
+  - libstdc++-devel-4.8.5-*.el7.i686
+  - libstdc++-devel-4.8.5-*.el7.x86_64
+  - lrzsz
+  - make
+  - net-tools
+  - nfs-utils
+  - numactl
+  - psmisc
+  - python-devel
+  - readline-devel
+  - redhat-lsb-core
+  - smartmontools
+  - sysstat
+  - unixODBC
+  - unixODBC-devel
+  - unzip
+  - xz-lzma-compat
+  - zip

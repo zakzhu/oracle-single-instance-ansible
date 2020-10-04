@@ -42,3 +42,11 @@
     # A filename or (since 2.0) glob pattern.
     # If it already exists, this step *will* be run.
     #remove:
+
+- name: <pr_r_boot_param_t_common> stop service tuned
+  systemd:
+    name: tuned
+    # Choices: reloaded, restarted, started, stopped
+    state: stopped
+    enabled: no
+    #daemon_reload: yes
