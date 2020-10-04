@@ -1,0 +1,10 @@
+---
+# defaults file for kernel_param
+
+# FROM TASK: <r_kernel_param_t_common> template a file to /etc/sysctl.d/80-oracle.conf
+# E.G. if physical memory is 64G，then kernel.shmmax=64*1024*1024*1024*0.9 and kernel.shmall=kernel.shmmax/kernel.shmmni
+mem_total_mb: "{{ ansible_facts['memtotal_mb'] }} MB"
+mem_total_byte: "{{ mem_total_mb | human_to_bytes }}"
+shmmni: 4096
+shmmax: "{{ (mem_total_byte | int)*0.9 | int }}"
+shmall: "{{ (shmmax | int)/(shmmni | int) | int }}"

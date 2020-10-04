@@ -1,0 +1,30 @@
+---
+# Reference:
+# - [Minimum Parameter Settings for Installation](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ladbi/minimum-parameter-settings-for-installation.html#GUID-CDEB89D1-4D48-41D9-9AC2-6AD9B0E944E3)
+#
+# Note:
+# Unless otherwise specified, the kernel parameter and shell limit values shown in the following table are minimum values only.
+# For production database systems, Oracle recommends that you tune these values to optimize the performance of the system.
+# See the operating system documentation for more information about tuning kernel parameters.
+- name: <r_kernel_param_t_common> template a file to /etc/sysctl.d/80-oracle.conf
+  template:
+    src: 80-oracle.conf.j2
+    dest: /etc/sysctl.d/80-oracle.conf
+    owner: root
+    group: root
+    mode: "0644"
+    #validate:
+    #backup: yes
+
+- name: <r_kernel_param_t_common> reload settings from all system configuration files
+  command:
+    cmd: sysctl --system --ignore
+    #chdir:
+    # A filename or (since 2.0) glob pattern.
+    # If it already exists, this step *won't* be run.
+    #creates:
+
+    # A filename or (since 2.0) glob pattern.
+    # If it already exists, this step *will* be run.
+    #remove:
+  ignore_errors: yes
