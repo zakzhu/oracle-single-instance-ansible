@@ -5,6 +5,12 @@
 # - [Disabling Transparent HugePages](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ladbi/disabling-transparent-hugepages.html#GUID-02E9147D-D565-4AF8-B12A-8E6E9F74BEEA)
 # - [CentOS / RHEL 7 : How to disable Transparent Huge pages (THP)](https://www.thegeekdiary.com/centos-rhel-7-how-to-disable-transparent-huge-pages-thp/)
 #
+# Oracle recommends that you disable Transparent HugePages,
+# because they may cause delays in accessing memory that
+# can result in node restarts in Oracle RAC environments,
+# or performance issues or delays for Oracle Database single instances.
+# Oracle continues to recommend using standard HugePages for Linux.
+#
 #Kernel boot parameters
 #category:arch:processor:kernel:distribution:parameter:recommended-value
 # boot:x86_64:*:*:*:numa:off
