@@ -1,0 +1,38 @@
+---
+# References:
+# - oracle-database-server-12cR2-preinstall-1.0-5.el7.src.rpm
+# - [Restrictions for HugePages and Transparent HugePages Configurations](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ladbi/restrictions-for-hugepages-and-transparent-hugepages-configurations.html#GUID-D8178896-D00F-4F02-82A7-A44F89D8F103)
+# - [Disabling Transparent HugePages](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ladbi/disabling-transparent-hugepages.html#GUID-02E9147D-D565-4AF8-B12A-8E6E9F74BEEA)
+# - [CentOS / RHEL 7 : How to disable Transparent Huge pages (THP)](https://www.thegeekdiary.com/centos-rhel-7-how-to-disable-transparent-huge-pages-thp/)
+#
+#Kernel boot parameters
+#category:arch:processor:kernel:distribution:parameter:recommended-value
+# boot:x86_64:*:*:*:numa:off
+# boot:*:*:*:*:transparent_hugepage:never
+- name: <r_boot_param_t_common> copy a file to /etc/default/grub
+  copy:
+    # if path ends with "/", only inside contents of that
+    # directory are copied to destination.
+    # if it does not end with "/", the directory itself
+    # with all contents is copied.
+    src: default_grub.ini
+    dest: /etc/default/grub
+    #owner:
+    #group:
+    #mode:
+    #backup: yes
+    # The validation command to run before copying into place.
+    # E.g. `validate: /usr/sbin/visudo -csf %s`
+    #validate:
+
+- name: <r_boot_param_t_common> rebuild /boot/grub2/grub.cfg
+  command:
+    cmd: grub2-mkconfig -o /boot/grub2/grub.cfg
+    #chdir:
+    # A filename or (since 2.0) glob pattern.
+    # If it already exists, this step *won't* be run.
+    #creates:
+
+    # A filename or (since 2.0) glob pattern.
+    # If it already exists, this step *will* be run.
+    #remove:
