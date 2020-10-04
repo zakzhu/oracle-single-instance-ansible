@@ -4,6 +4,7 @@
 # - [Supported Red Hat Enterprise Linux 7 Distributions for x86-64](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ladbi/supported-red-hat-enterprise-linux-7-distributions-for-x86-64.html#GUID-2E11B561-6587-4789-A583-2E33D705E498)
 # - [Additional Drivers and Software Packages for Linux](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ladbi/additional-drivers-and-software-packages-for-linux.html#GUID-F09C1AE2-FEE2-42A6-BEEF-289251413841)
 # - [Checking Kernel and Package Requirements for Linux](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ladbi/checking-kernel-and-package-requirements-for-linux.html#GUID-7065A86D-C2AB-4731-953B-12AC25C94156)
+# - [Oracle 12cR2 单实例文件系统搭建（阿里云）](https://www.zybuluo.com/clisdodo/note/1537184)
 #
 # FROM TASK: <r_pkg_reqs_t_common> install required packages
 required_packages:

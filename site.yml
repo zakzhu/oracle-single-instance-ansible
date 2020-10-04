@@ -20,9 +20,75 @@
             - pr_r_common
         - meta: flush_handlers
 
+        - import_role:
+            name: pre_roles/boot_param
+          tags:
+            - pr_r_boot_param
+        - meta: flush_handlers
+
+        - import_role:
+            name: pre_roles/swap_file
+          tags:
+            - pr_r_swap_file
+        - meta: flush_handlers
+
+        - import_role:
+            name: pre_roles/hostname
+          tags:
+            - pr_r_hostname
+        - meta: flush_handlers
+
+        - import_role:
+            name: pre_roles/data_volumes
+          tags:
+            - pr_r_data_volumes
+        - meta: flush_handlers
+
+        - import_role:
+            name: pre_roles/security
+          tags:
+            - pr_r_security
+        - meta: flush_handlers
+
+        - import_role:
+            name: pre_roles/install_check
+          tags:
+            - pr_r_install_check
+        - meta: flush_handlers
+
   tasks:
     - when: status == '0'
       block:
+        - import_role:
+            name: users
+          tags:
+            - r_users
+        - meta: flush_handlers
+
+        - import_role:
+            name: resource_limits
+          tags:
+            - r_resource_limits
+        - meta: flush_handlers
+
+        - import_role:
+            name: kernel_param
+          tags:
+            - r_kernel_param
+        - meta: flush_handlers
+
+        - import_role:
+            name: pkg_reqs
+          tags:
+            - r_pkg_reqs
+        - meta: flush_handlers
+
+        - import_role:
+            name: response_files
+          tags:
+            - r_response_files
+        - meta: flush_handlers
+
         - import_role:
             name: common
           tags:
