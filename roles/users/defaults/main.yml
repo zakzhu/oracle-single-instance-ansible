@@ -1,0 +1,66 @@
+---
+# defaults file for users
+
+# References:
+# - [5 Configuring Users, Groups and Environments for Oracle Grid Infrastructure and Oracle Database](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ladbi/configuring-users-groups-and-environments-for-oracle-grid-infrastructure-and-oracle-database.html#GUID-B65E6113-D056-4DD9-940F-DFF493E413D5)
+
+# FROM TASK: <r_users_t_create_groups> create primary groups
+# EXAMPLE: primary_groups variable
+# primary_groups:
+#   group1:
+#     gid:
+#   group2:
+#     gid:
+#   # ...
+primary_groups:
+  # References:
+  # - [Creating the Oracle Inventory Group If an Oracle Inventory Does Not Exist](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ladbi/creating-the-oracle-inventory-group-if-an-oracle-inventory-does-not-exist.html#GUID-D2F89B6F-2B5D-4B70-8523-BCAF71865271)
+  oinstall: # oraInventory group
+    gid: 54321
+
+# FROM TASK: <r_users_t_create_groups> create secondary groups
+# EXAMPLE: secondary_group variable
+# secondary_groups:
+#   group3:
+#     gid:
+#   group4:
+#     gid:
+#   # ...
+secondary_groups:
+  # References:
+  # - [Creating the OSDBA Group for Database Installations](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ladbi/creating-the-osdba-group-for-database-installations.html#GUID-F1A111BE-9DC8-4E61-9713-8D41D97984FA)
+  dba: # OSDBA group
+    gid: 54322
+
+# FROM TASK: <r_users_t_common> create users and update users' authentication tokens
+# EXAMPLE: users variable
+# users:
+#   user1:
+#     comment:
+#     uid:
+#     # optionally sets the user's primary group
+#     primary_group:
+#     # type: list
+#     secondary_groups:
+#       - group3
+#       - group4
+#
+#     home:
+#     shell:
+#     # plain text
+#     password:
+#     # type: bool
+#     needs_generate_ssh_key:
+#   user2:
+#     # ...
+#   # ...
+users:
+  # References:
+  # - [Creating an Oracle Software Owner User](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ladbi/creating-an-oracle-software-owner-user.html#GUID-C1E5CEA8-741A-4500-B03E-B4A6BC1E87BB)
+  oracle: # oracle software owner user
+    comment: oracle software owner user
+    uid: 54321
+    primary_group: oinstall
+    secondary_groups:
+      - dba
+    password: oracle
