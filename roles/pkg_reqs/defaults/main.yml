@@ -24,10 +24,10 @@ required_packages:
   - dos2unix
   - gcc
   - gcc-c++
-  - glibc-2.17-*.el7.i686
-  - glibc-2.17-*.el7.x86_64
-  - glibc-devel-2.17-*.el7.i686
-  - glibc-devel-2.17-*.el7.x86_64
+  - glibc.i686
+  - glibc.x86_64
+  - glibc-devel.i686
+  - glibc-devel.x86_64
   - glibc-utils
   - ksh
   - libaio-0.3.109-*.el7.i686
