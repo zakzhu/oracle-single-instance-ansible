@@ -11,7 +11,7 @@
 
 - name: <pr_r_swap_file_t_common> set up a swap file
   command:
-    cmd: "dd if=/dev/zero of=/swapfile bs=1 count={{ swap_size }}"
+    cmd: "dd if=/dev/zero of=/swapfile bs=1M count={{ swap_size }}"
     #chdir:
     # A filename or (since 2.0) glob pattern.
     # If it already exists, this step *won't* be run.

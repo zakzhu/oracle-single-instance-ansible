@@ -10,16 +10,15 @@
 # Between 2 GB and 16 GB: Equal to the size of the RAM
 # More than 16 GB: 16 GB
 # Note: If you enable HugePages for your Linux servers, then you should deduct the memory allocated to HugePages from the available RAM before calculating swap space.
-mem_total_mb: "{{ ansible_facts['memtotal_mb'] }} MB"
-mem_total_byte: "{{ mem_total_mb | human_to_bytes }}"
-_1_GB_TO_BYTE: 1073741824
-_2_GB_TO_BYTE: 2147483648
-_16_GB_TO_BYTE: 17179869184
+mem_total_mb: "{{ ansible_facts['memtotal_mb'] }}"
+_1_GB_TO_MB: 1024
+_2_GB_TO_MB: 2048
+_16_GB_TO_MB: 16384
 swap_size: |-
-  {%- if (mem_total_byte | int) >= _1_GB_TO_BYTE and (mem_total_byte | int) <= _2_GB_TO_BYTE -%}
-  {{ ((mem_total_byte | float)*1.5) | int }}
-  {%- elif (mem_total_byte | int) > _2_GB_TO_BYTE and (mem_total_byte | int) <= _16_GB_TO_BYTE -%}
-  {{ mem_total_byte }}
+  {%- if (mem_total_mb | int) >= _1_GB_TO_MB and (mem_total_mb | int) <= _2_GB_TO_MB -%}
+  {{ ((mem_total_mb | float)*1.5) | int }}
+  {%- elif (mem_total_mb | int) > _2_GB_TO_MB and (mem_total_mb | int) <= _16_GB_TO_MB -%}
+  {{ mem_total_mb }}
   {%- else -%}
-  {{ _16_GB_TO_BYTE }}
+  {{ _16_GB_TO_MB }}
   {%- endif -%}
