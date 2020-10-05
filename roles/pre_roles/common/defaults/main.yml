@@ -3,8 +3,6 @@
 
 # FROM TASK: <pr_r_common_t_common> be failed when the os not supported
 supported_os:
-  desktop:
-    # - Fedora
   server:
     - CentOS-7
     # - CentOS-8

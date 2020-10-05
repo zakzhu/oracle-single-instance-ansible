@@ -6,9 +6,7 @@
     os_distro: "{{ ansible_facts['distribution'] }}"
     os_distro_major_version: "{{ ansible_facts['distribution_major_version'] }}"
     os_version: "{{ os_distro }}-{{ os_distro_major_version }}"
-  when:
-    - os_distro not in supported_os.desktop
-    - os_version not in supported_os.server
+  when: os_version not in supported_os.server
 
 - name: <pr_r_common_t_common> set start stats
   set_stats:
