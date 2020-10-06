@@ -9,7 +9,7 @@
     #validate:
     #backup: yes
 
-- name: <r_resource_limits_t_common> tem
+- name: <r_resource_limits_t_common> template a file to /etc/pam.d/login
   blockinfile:
     path: /etc/pam.d/login
     insertafter: EOF
@@ -23,4 +23,10 @@
     # The path to the file to validate is passed in via '%s'
     # which must be present as in the examples below.
     #validate:
-    backup: yes
+    #backup: yes
+
+- name: <r_resource_limits_t_common>
+  debug:
+  become: yes
+  become_method: su
+  become_user: oracle
