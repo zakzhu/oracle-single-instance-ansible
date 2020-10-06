@@ -1,0 +1,25 @@
+---
+- name: <>
+  command:
+    #become: yes
+    #become_user:
+    cmd: cksum linuxx64_12201_database.zip
+    chdir: /tmp
+    # A filename or (since 2.0) glob pattern.
+    # If it already exists, this step *won't* be run.
+    #creates:
+
+    # A filename or (since 2.0) glob pattern.
+    # If it already exists, this step *will* be run.
+    #remove:
+
+- name: <> extract SRC into DEST
+  unarchive:
+    src:
+    dest:
+    #owner:
+    #group:
+    #mode:
+    # If the specified absolute path (file or directory) already
+    # exists, this step will *not* be run.
+    creates: DEST/src

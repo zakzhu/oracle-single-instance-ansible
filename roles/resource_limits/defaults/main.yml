@@ -8,4 +8,4 @@ limits_conf_file: 80-oracle.conf
 #
 # at least 90 percent of the current RAM when HugePages memory is enabled and at least 3145728 KB (3 GB) when HugePages memory is disabled
 mem_total_kb: "{{ (ansible_facts['memtotal_mb'])*1024 }}"
-memlock_limit: "{{ (mem_total_kb | float)*0.9 | int }}"
+memlock_limit: "{{ ((mem_total_kb | float)*0.9) | int }}"

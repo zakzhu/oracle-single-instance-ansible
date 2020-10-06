@@ -1,0 +1,11 @@
+---
+# tasks file for get_software
+
+- import_tasks: local_copy.yml
+  tags:
+    - r_get_software_t_copy
+#
+# TODO:
+# - import_tasks: remote_get.yml
+#   tags:
+#     - r_get_software_t_remote_get
