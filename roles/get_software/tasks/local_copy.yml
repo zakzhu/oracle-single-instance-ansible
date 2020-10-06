@@ -1,9 +1,9 @@
 ---
-- name: <>
+- name: <r_get_software_t_local_copy> compute the checksum of software package
   command:
     #become: yes
     #become_user:
-    cmd: cksum linuxx64_12201_database.zip
+    cmd: "{{ check_method }} {{ software_package }}"
     chdir: /tmp
     # A filename or (since 2.0) glob pattern.
     # If it already exists, this step *won't* be run.
@@ -12,14 +12,21 @@
     # A filename or (since 2.0) glob pattern.
     # If it already exists, this step *will* be run.
     #remove:
+  register: checksum_result
 
-- name: <> extract SRC into DEST
+- name: <r_get_software_t_local_copy> check the checksum of software package
+  fail:
+    msg: "The package is corrupted, please copy {{ software_package }} to /tmp again!" # not required. The customized message used for failing execution. If omitted, fail will simply bail out with a generic message.
+  when: checksum_result.stdout != software_checksum
+
+- name: <r_get_software_t_local_copy> extract software package into unpacked path
   unarchive:
-    src:
-    dest:
+    src: "/tmp/{{ software_package }}"
+    dest: "{{ unpacked_path }}"
     #owner:
     #group:
     #mode:
     # If the specified absolute path (file or directory) already
     # exists, this step will *not* be run.
-    creates: DEST/src
+    # creates: DEST/src
+    creates: "{{ unpacked_path }}/database"

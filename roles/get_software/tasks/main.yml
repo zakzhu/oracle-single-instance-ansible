@@ -3,7 +3,7 @@
 
 - import_tasks: local_copy.yml
   tags:
-    - r_get_software_t_copy
+    - r_get_software_t_local_copy
 #
 # TODO:
 # - import_tasks: remote_get.yml

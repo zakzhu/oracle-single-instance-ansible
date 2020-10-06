@@ -1,2 +1,13 @@
 ---
 # defaults file for get_software
+
+# FROM TASK: <r_get_software_t_local_copy> compute the checksum of software package
+# check_method choices: cksum, md5sum, sha256sum
+check_method: cksum
+software_package: linuxx64_12201_database.zip
+
+# FROM TASK: <r_get_software_t_local_copy> check the checksum of software package
+software_checksum: "4170261901 3453696911 ./linuxx64_12201_database.zip"
+
+# FROM TASK: <r_get_software_t_local_copy> extract software package into unpacked path
+unpacked_path: /home/oracle/
