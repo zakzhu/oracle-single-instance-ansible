@@ -23,9 +23,9 @@
   unarchive:
     src: "/tmp/{{ software_package }}"
     dest: "{{ unpacked_path }}"
-    #owner:
-    #group:
-    #mode:
+    owner: oracle
+    group: oinstall
+    mode: "0755"
     # If the specified absolute path (file or directory) already
     # exists, this step will *not* be run.
     # creates: DEST/src
