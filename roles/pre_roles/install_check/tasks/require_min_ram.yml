@@ -8,4 +8,4 @@
 - name: <pr_r_install_check_t_require_min_ram> determine whether the system memory is greater than 1GB
   fail:
     msg: "At least 1 GB RAM for Oracle Database installations. 2 GB RAM recommended." # not required. The customized message used for failing execution. If omitted, fail will simply bail out with a generic message.
-  when: (mem_total_byte | int) < (_1_GB_TO_BYTE | int)
+  when: (mem_total_mb | int) < (_1_GB_TO_MB | int)

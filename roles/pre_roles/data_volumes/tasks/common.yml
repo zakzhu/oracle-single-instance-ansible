@@ -1,33 +1,7 @@
 ---
-- name: <pr_r_data_volumes_t_common> create a xfs filesystem on /dev/sdb
+- name: <pr_r_data_volumes_t_common> create a xfs filesystem on devices
   filesystem:
     fstype: xfs
-    dev: /dev/sdb
+    dev: "{{ item }}"
     #opts:
-
-- name: <pr_r_data_volumes_t_common> mount up device
-  mount:
-    path: "{{ pm }}"
-    src: /dev/sdb
-    fstype: xfs
-    #opts:
-
-    # If `mounted', the device will be actively mounted and
-    # appropriately configured in `fstab'. If the mount point is not
-    # present, the mount point will be created.
-    #
-    # If `unmounted', the device will be unmounted without changing `fstab'.
-    #
-    # `present' only specifies that the device is to be configured
-    # in `fstab' and does not trigger or require a mount.
-    #
-    # `absent' specifies that the device mount's entry will be
-    # removed from `fstab' and will also unmount the device and
-    # remove the mount point.
-    #
-    # `remounted' specifies that the device will be remounted for
-    # when you want to force a refresh on the mount itself (added in
-    # 2.9). This will always return changed=true.
-    #
-    # Choices: absent, mounted, present, unmounted, remounted
-    state: mounted
+  loop: "{{ devices }}"

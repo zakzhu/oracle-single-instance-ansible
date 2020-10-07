@@ -2,9 +2,5 @@
 # defaults file for data_volumes
 
 # FROM TASK: <pr_r_data_volumes_t_common> mount up device
-# References:
-# - [Oracle Home Directory Naming Convention](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ladbi/oracle-home-directory-naming-convention.html#GUID-8599FF25-C020-4E03-93D2-8D92ADA240A8)
-# - [Optimal Flexible Architecture File Path Examples](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ladbi/optimal-flexible-architecture-file-path-examples.html#GUID-BB3EE4F7-50F4-4A2D-8A0D-96B7CC44029B)
-# The directory pattern syntax for Oracle homes is /pm/s/u/product/v/type_[n].
-# A mount point name
-pm: /u01 # user data mount point 1
+devices:
+  - /dev/sdb
