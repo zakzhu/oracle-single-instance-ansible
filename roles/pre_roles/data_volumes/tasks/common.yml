@@ -2,6 +2,7 @@
 - name: <pr_r_data_volumes_t_common> create a xfs filesystem on devices
   filesystem:
     fstype: xfs
-    dev: "{{ item }}"
+    dev: "{{ item.dev }}"
+    opts: "-L {{ item.label }}"
     #opts:
-  loop: "{{ devices }}"
+  loop: "{{ volume_map }}"
