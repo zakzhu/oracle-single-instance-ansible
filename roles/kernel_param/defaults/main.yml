@@ -7,4 +7,4 @@ mem_total_mb: "{{ ansible_facts['memtotal_mb'] }} MB"
 mem_total_byte: "{{ mem_total_mb | human_to_bytes }}"
 shmmni: 4096
 shmmax: "{{ ((mem_total_byte | int)*0.9) | int }}"
-shmall: "{{ (shmmax | int)/(shmmni | int) | int }}"
+shmall: "{{ ((shmmax | int)/(shmmni | int)) | int }}"
