@@ -1,18 +1,5 @@
 ---
-- name: <r_mount_points_t_common> create mount points directory
-  file:
-    path: "{{ v.point }}"
-    state: directory
-    owner: oracle
-    group: oinstall
-    mode: "0775"
-  loop: "{{ mount_map | dict2items }}"
-  loop_control:
-    label: "{{ v.point }}"
-  vars:
-    v: "{{ item.value }}"
-
-- name: <r_mount_points_t_common> mount up devices
+- name: <r_mount_points_t_common> mount up data volumes
   mount:
     path: "{{ v.point }}"
     src: "LABEL={{ v.volume }}"
@@ -39,5 +26,18 @@
     # Choices: absent, mounted, present, unmounted, remounted
     state: mounted
   loop: "{{ mount_map | dict2items }}"
+  vars:
+    v: "{{ item.value }}"
+
+- name: <r_mount_points_t_common> change mount points permission
+  file:
+    path: "{{ v.point }}"
+    state: directory
+    owner: oracle
+    group: oinstall
+    mode: "0775"
+  loop: "{{ mount_map | dict2items }}"
+  loop_control:
+    label: "{{ v.point }}"
   vars:
     v: "{{ item.value }}"

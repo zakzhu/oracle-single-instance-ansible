@@ -1,7 +1,7 @@
 # @Author: Zak Zhu
 # @Date:   2020-10-05 14:57:45
 # @Last Modified by:   Zak Zhu
-# @Last Modified time: 2020-10-08 04:22:27
+# @Last Modified time: 2020-10-08 05:35:14
 ---
 - name: "{{ playbook_dir | basename }}"
   hosts: localhost
@@ -98,6 +98,12 @@
         #   tags:
         #     - r_response_files
         # - meta: flush_handlers
+
+        - import_role:
+            name: get_software
+          tags:
+            - r_get_software
+        - meta: flush_handlers
 
         # - import_role:
         #     name: common
