@@ -2,7 +2,7 @@
 # defaults file for resource_limits
 
 # FROM TASK: "<r_resource_limits_t_common> template a file to /etc/security/limits.d/{{ limits_conf_file }}"
-limits_conf_file: 80-oracle.conf
+limits_conf_file: 70-user-oracle.conf
 # References:
 # - [Checking Resource Limits for Oracle Software Installation Users](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ladbi/checking-resource-limits-for-oracle-software-installation-users.html#GUID-293874BD-8069-470F-BEBF-A77C06618D5A)
 #

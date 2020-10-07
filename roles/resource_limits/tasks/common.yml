@@ -8,25 +8,3 @@
     mode: "0644"
     #validate:
     #backup: yes
-
-- name: <r_resource_limits_t_common> template a file to /etc/pam.d/login
-  blockinfile:
-    path: /etc/pam.d/login
-    insertafter: EOF
-    marker: "{mark}"
-    marker_begin: "# Resource limits imposed on login sessions via pam_limits"
-    block: |
-      session    required     pam_limits.so
-    marker_end: ""
-    state: present
-    # The validation command to run before copying into place.
-    # The path to the file to validate is passed in via '%s'
-    # which must be present as in the examples below.
-    #validate:
-    #backup: yes
-
-- name: <r_resource_limits_t_common>
-  debug:
-  become: yes
-  become_method: su
-  become_user: oracle
