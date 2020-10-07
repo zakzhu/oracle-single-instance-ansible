@@ -1,7 +1,7 @@
 # @Author: Zak Zhu
 # @Date:   2020-10-05 14:57:45
 # @Last Modified by:   Zak Zhu
-# @Last Modified time: 2020-10-05 14:57:58
+# @Last Modified time: 2020-10-08 04:22:27
 ---
 - name: "{{ playbook_dir | basename }}"
   hosts: localhost
@@ -79,6 +79,12 @@
             name: kernel_param
           tags:
             - r_kernel_param
+        - meta: flush_handlers
+
+        - import_role:
+            name: mount_points
+          tags:
+            - r_mount_points
         - meta: flush_handlers
 
         - import_role:

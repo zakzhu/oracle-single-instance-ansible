@@ -5,4 +5,4 @@
     dev: "{{ item.dev }}"
     opts: "-L {{ item.label }}"
     #opts:
-  loop: "{{ volume_map }}"
+  loop: "{{ volume_map | dict2items }}"

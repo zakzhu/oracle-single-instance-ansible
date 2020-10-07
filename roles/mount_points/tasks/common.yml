@@ -6,7 +6,7 @@
     owner: oracle
     group: oinstall
     mode: "0775"
-  loop: "{{ mount_map }}"
+  loop: "{{ mount_map | dict2items }}"
 
 - name: <r_mount_points_t_common> mount up devices
   mount:
@@ -34,4 +34,4 @@
     #
     # Choices: absent, mounted, present, unmounted, remounted
     state: mounted
-  loop: "{{ mount_map }}"
+  loop: "{{ mount_map | dict2items }}"
