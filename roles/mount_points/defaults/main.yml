@@ -6,5 +6,5 @@
 # - [Optimal Flexible Architecture File Path Examples](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ladbi/optimal-flexible-architecture-file-path-examples.html#GUID-BB3EE4F7-50F4-4A2D-8A0D-96B7CC44029B)
 mount_map:
   pm1:
-    point: /u01
-    mount:
+    point: /u01 # mount point path
+    volume: data1 # volume label

@@ -1,16 +1,17 @@
 ---
 - name: <r_mount_points_t_common> create mount points directory
   file:
-    path:
+    path: "{{ item.point }}"
     state: directory
     owner: oracle
     group: oinstall
     mode: "0775"
+  loop: "{{ mount_map }}"
 
 - name: <r_mount_points_t_common> mount up devices
   mount:
-    path: "{{ pm }}"
-    src: /dev/sdb
+    path: "{{ item.point }}"
+    src: "LABEL={{ item.volume }}"
     fstype: xfs
     #opts:
 
@@ -33,3 +34,4 @@
     #
     # Choices: absent, mounted, present, unmounted, remounted
     state: mounted
+  loop: "{{ mount_map }}"
