@@ -4,5 +4,5 @@
 # FROM TASK: <pr_r_data_volumes_t_common> mount up device
 volume_map:
   v1:
-    dev: /dev/sdb
+    device: /dev/sdb
     label: data1
