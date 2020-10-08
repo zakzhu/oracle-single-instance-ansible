@@ -1,7 +1,7 @@
 # @Author: Zak Zhu
 # @Date:   2020-10-05 14:57:45
 # @Last Modified by:   Zak Zhu
-# @Last Modified time: 2020-10-08 05:35:14
+# @Last Modified time: 2020-10-08 16:33:59
 ---
 - name: "{{ playbook_dir | basename }}"
   hosts: localhost
@@ -93,23 +93,23 @@
             - r_pkg_reqs
         - meta: flush_handlers
 
-        # - import_role:
-        #     name: response_files
-        #   tags:
-        #     - r_response_files
-        # - meta: flush_handlers
-
         - import_role:
             name: get_software
           tags:
             - r_get_software
         - meta: flush_handlers
 
-        # - import_role:
-        #     name: common
-        #   tags:
-        #     - r_common
-        # - meta: flush_handlers
+        - import_role:
+            name: response_files
+          tags:
+            - r_response_files
+        - meta: flush_handlers
+
+        - import_role:
+            name: common
+          tags:
+            - r_common
+        - meta: flush_handlers
 
   post_tasks:
     - when: status == '0'
