@@ -16,6 +16,7 @@
     # A filename or (since 2.0) glob pattern.
     # If it already exists, this step *will* be run.
     #remove:
+  ignore_errors: yes
 
 - name: <r_common_t_common> run orainstRoot.sh and root.sh script
   shell:
@@ -37,6 +38,7 @@
     - "{{ oracle_base }}/../oraInventory/orainstRoot.sh"
     - "{{ oracle_home }}/root.sh"
     - "ORACLE_HOME={{ oracle_home }};echo 'yes'|{{ oracle_home }}/suptools/tfa/release/tfa_home/install/roottfa.sh"
+  ignore_errors: yes
 
 - name: <r_common_t_common> run net configuration assistant in silent mode
   shell:
@@ -54,6 +56,7 @@
     # A filename or (since 2.0) glob pattern.
     # If it already exists, this step *will* be run.
     #remove:
+  ignore_errors: yes
 
 - name: <r_common_t_common> run database configuration assistant in silent mode
   shell:
@@ -71,3 +74,4 @@
     # A filename or (since 2.0) glob pattern.
     # If it already exists, this step *will* be run.
     #remove:
+  ignore_errors: yes
