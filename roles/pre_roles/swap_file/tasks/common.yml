@@ -8,7 +8,7 @@
     mode: "0600"
     access_time: preserve
     modification_time: preserve
-  when: ansible_facts['swaptotal_mb'] == '0'
+  when: swap_total_mb == '0'
 
 - name: <pr_r_swap_file_t_common> set up a swap file
   command:
@@ -21,14 +21,14 @@
     # A filename or (since 2.0) glob pattern.
     # If it already exists, this step *will* be run.
     #remove:
-  when: ansible_facts['swaptotal_mb'] == '0'
+  when: swap_total_mb == '0'
 
 - name: <pr_r_swap_file_t_common> create a swap filesystem
   filesystem:
     fstype: swap
     dev: /swapfile
     #opts:
-  when: ansible_facts['swaptotal_mb'] == '0'
+  when: swap_total_mb == '0'
 
 - name: <pr_r_swap_file_t_common> add swap mount line to /etc/fstab
   lineinfile:
@@ -36,14 +36,14 @@
     state: present
     insertafter: EOF
     line: |-
-      /swapfile                                 swap                    swap    defaults        0 0
+      /swapfile swap  swap  defaults  0 0
     #backup: yes
 
     # The validation command to run before copying into place.
     # The path to the file to validate is passed in via '%s'
     # which must be present as in the examples below.
     #validate:
-  when: ansible_facts['swaptotal_mb'] == '0'
+  when: swap_total_mb == '0'
 
 - name: <pr_r_swap_file_t_common> mount up /swapfile
   command:
@@ -56,4 +56,4 @@
     # A filename or (since 2.0) glob pattern.
     # If it already exists, this step *will* be run.
     #remove:
-  when: ansible_facts['swaptotal_mb'] == '0'
+  when: swap_total_mb == '0'

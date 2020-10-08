@@ -1,6 +1,8 @@
 ---
 # defaults file for swap_file
 
+swap_total_mb: "{{ ansible_facts['swaptotal_mb'] }}"
+
 # FROM TASK: <pr_r_swap_file_t_common> set up a swap file
 # References:
 # - [Server Configuration Checklist for Oracle Database Installation](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ladbi/server-configuration-checklist-for-oracle-database-installation.html#GUID-CD4657FB-2DDC-4B30-AAB4-2C927045A86D)
