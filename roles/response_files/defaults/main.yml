@@ -1,2 +1,6 @@
 ---
 # defaults file for response_files
+
+oracle_base: /u01/app/oracle
+oracle_home: /u01/app/oracle/product/12.2.0/dbhome_1
+oracle_edition: EE

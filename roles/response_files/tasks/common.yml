@@ -1,16 +1,10 @@
 ---
-- name: <r_reponse_files_t_common> copy a file to DEST
-  copy:
-    # if path ends with "/", only inside contents of that
-    # directory are copied to destination.
-    # if it does not end with "/", the directory itself
-    # with all contents is copied.
-    src:
-    dest:
-    #owner:
-    #group:
-    #mode:
-    #backup: yes
-    # The validation command to run before copying into place.
-    # E.g. `validate: /usr/sbin/visudo -csf %s`
+- name: <r_response_files_t_common> template a file to /home/oracle/database/db_inst.rsp
+  template:
+    src: db_inst.rsp.j2
+    dest: /home/oracle/database/db_inst.rsp
+    owner: oracle
+    group: oinstall
+    mode: "0644"
     #validate:
+    #backup: yes
