@@ -1,8 +1,72 @@
 ---
 # Below is a code example
-- name: <r_common_t_common> test task
-  debug:
+- name: <r_common_t_common> start oracle universal installer in silent mode
+  command:
+  become: yes
+  become_method: su
+  become_user: oracle
+  #become_flags: "-s /bin/sh"
+  args:
+    cmd: ./runInstaller -silent -force -noconfig -responseFile db_inst.rsp
+    chdir: "{{ unpacked_path }}/database"
+    # A filename or (since 2.0) glob pattern.
+    # If it already exists, this step *won't* be run.
+    #creates:
 
-- name: <r_common_t_common> test trigger handler
-  command: echo
-  notify: "({{ role_name }}) hello world"
+    # A filename or (since 2.0) glob pattern.
+    # If it already exists, this step *will* be run.
+    #remove:
+
+- name: <r_common_t_common> run orainstRoot.sh and root.sh script
+  command:
+  become: yes
+  #become_method: su
+  become_user: root
+  #become_flags: "-s /bin/sh"
+  args:
+    cmd: "{{ item }}"
+    #chdir:
+    # A filename or (since 2.0) glob pattern.
+    # If it already exists, this step *won't* be run.
+    #creates:
+
+    # A filename or (since 2.0) glob pattern.
+    # If it already exists, this step *will* be run.
+    #remove:
+  loop:
+    - "{{ oracle_base }}/../oraInventory/orainstRoot.sh"
+    - "{{ oracle_home }}/root.sh"
+
+- name: <r_common_t_common> run net configuration assistant in silent mode
+  command:
+  become: yes
+  become_method: su
+  become_user: oracle
+  #become_flags: "-s /bin/sh"
+  args:
+    cmd: bin/netca -silent -responsefile netca.rsp
+    chdir: "{{ oracle_home }}"
+    # A filename or (since 2.0) glob pattern.
+    # If it already exists, this step *won't* be run.
+    #creates:
+
+    # A filename or (since 2.0) glob pattern.
+    # If it already exists, this step *will* be run.
+    #remove:
+
+- name: <r_common_t_common> run database configuration assistant in silent mode
+  command:
+  become: yes
+  become_method: su
+  become_user: oracle
+  #become_flags: "-s /bin/sh"
+  args:
+    cmd: bin/dbca -silent -responsefile dbca.rsp
+    chdir: "{{ oracle_home }}"
+    # A filename or (since 2.0) glob pattern.
+    # If it already exists, this step *won't* be run.
+    #creates:
+
+    # A filename or (since 2.0) glob pattern.
+    # If it already exists, this step *will* be run.
+    #remove:
