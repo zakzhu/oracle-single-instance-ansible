@@ -29,7 +29,7 @@ responseFileVersion=/oracle/assistants/rspfmt_dbca_response_schema_v12.2.0
 # Default value : None
 # Mandatory     : Yes
 #-----------------------------------------------------------------------------
-gdbName=###ORACLE_SID###
+gdbName={{ oracle_sid }}
 
 #-----------------------------------------------------------------------------
 # Name          : sid
@@ -39,7 +39,7 @@ gdbName=###ORACLE_SID###
 # Default value : <db_name> specified in GDBNAME
 # Mandatory     : No
 #-----------------------------------------------------------------------------
-sid=###ORACLE_SID###
+sid={{ oracle_sid }}
 
 #-----------------------------------------------------------------------------
 # Name          : createAsContainerDatabase 
@@ -69,7 +69,7 @@ numberOfPDBs=1
 # Default value : None
 # Mandatory     : No
 #-----------------------------------------------------------------------------
-pdbName=###ORACLE_PDB###
+pdbName={{ oracle_pdb }}
 
 #-----------------------------------------------------------------------------
 # Name          : pdbAdminPassword
@@ -79,7 +79,7 @@ pdbName=###ORACLE_PDB###
 # Default value : None
 # Mandatory     : No
 #-----------------------------------------------------------------------------
-pdbAdminPassword=###ORACLE_PWD###
+pdbAdminPassword={{ oracle_pwd }}
 
 #-----------------------------------------------------------------------------
 # Name          : templateName
@@ -89,7 +89,7 @@ pdbAdminPassword=###ORACLE_PWD###
 # Default value : None
 # Mandatory     : Yes
 #-----------------------------------------------------------------------------
-templateName=General_Purpose.dbc
+templateName={{ oracle_home }}/General_Purpose.dbc
 
 #-----------------------------------------------------------------------------
 # Name          : sysPassword
@@ -99,7 +99,7 @@ templateName=General_Purpose.dbc
 # Default value : None
 # Mandatory     : Yes
 #-----------------------------------------------------------------------------
-sysPassword=###ORACLE_PWD###
+sysPassword={{ oracle_pwd }}
 
 #-----------------------------------------------------------------------------
 # Name          : systemPassword
@@ -109,7 +109,7 @@ sysPassword=###ORACLE_PWD###
 # Default value : None
 # Mandatory     : Yes
 #-----------------------------------------------------------------------------
-systemPassword=###ORACLE_PWD###
+systemPassword={{ oracle_pwd }}
 
 #-----------------------------------------------------------------------------
 # Name          : emConfiguration
@@ -119,7 +119,7 @@ systemPassword=###ORACLE_PWD###
 # Default value : NONE
 # Mandatory     : No
 #-----------------------------------------------------------------------------
-emConfiguration=DBEXPRESS
+#emConfiguration=DBEXPRESS
 
 #-----------------------------------------------------------------------------
 # Name          : emExpressPort
@@ -141,7 +141,7 @@ emExpressPort=5500
 # Mandatory     : Yes, if emConfiguration is specified or
 #                 the value of runCVUChecks is TRUE
 #-----------------------------------------------------------------------------
-dbsnmpPassword=###ORACLE_PWD###
+#dbsnmpPassword={{ oracle_pwd }}
 
 #-----------------------------------------------------------------------------
 # Name          : characterSet
@@ -151,7 +151,7 @@ dbsnmpPassword=###ORACLE_PWD###
 # Default value : "US7ASCII"
 # Mandatory     : NO
 #-----------------------------------------------------------------------------
-characterSet=###ORACLE_CHARACTERSET###
+characterSet={{ oracle_characterset }}
 
 #-----------------------------------------------------------------------------
 # Name          : nationalCharacterSet
@@ -170,7 +170,7 @@ nationalCharacterSet=AL16UTF16
 # Default value : None
 # Mandatory     : NO
 #-----------------------------------------------------------------------------
-initParams=audit_trail=none,audit_sys_operations=false
+#initParams=audit_trail=none,audit_sys_operations=false
 
 #-----------------------------------------------------------------------------
 # Name          : listeners
@@ -181,7 +181,7 @@ initParams=audit_trail=none,audit_sys_operations=false
 # Valid values  : The list should be comma separated like "listener1,listener2".
 # Mandatory     : NO
 #-----------------------------------------------------------------------------
-#listeners=LISTENER
+listeners=LISTENER
 
 #-----------------------------------------------------------------------------
 # Name          : automaticMemoryManagement
@@ -191,7 +191,9 @@ initParams=audit_trail=none,audit_sys_operations=false
 # Default value : TRUE
 # Mandatory     : NO
 #-----------------------------------------------------------------------------
-automaticMemoryManagement=FALSE
+{% if (mem_total_mb | int) > _4_GB_TO_MB %}
+automaticMemoryManagement=false
+{% endif %}}
 
 #-----------------------------------------------------------------------------
 # Name          : totalMemory
@@ -202,3 +204,43 @@ automaticMemoryManagement=FALSE
 # Mandatory     : NO
 #-----------------------------------------------------------------------------
 totalMemory=0
+
+#-----------------------------------------------------------------------------
+# Name          : memoryPercentage
+# Datatype      : String
+# Description   : percentage of physical memory for Oracle
+# Default value : None
+# Mandatory     : NO
+#-----------------------------------------------------------------------------
+memoryPercentage=40
+
+#-----------------------------------------------------------------------------
+# Name          : databaseConfigType
+# Datatype      : String
+# Description   : database conf type as Single Instance, Real Application Clus
+ter or Real Application Cluster One Nodes database
+# Valid values  : SI\RAC\RACONENODE
+# Default value : SI
+# Mandatory     : No
+#-----------------------------------------------------------------------------
+databaseConfigType=SI
+
+#-----------------------------------------------------------------------------
+# Name          : useLocalUndoForPDBs 
+# Datatype      : boolean
+# Description   : Flag to create local undo tablespace for all PDB's.
+# Valid values  : TRUE\FALSE
+# Default value : TRUE
+# Mandatory     : No
+#-----------------------------------------------------------------------------
+useLocalUndoForPDBs=true
+
+#-----------------------------------------------------------------------------
+# Name          : databaseType
+# Datatype      : String
+# Description   : used for memory distribution when memoryPercentage specified
+# Valid values  : MULTIPURPOSE|DATA_WAREHOUSING|OLTP
+# Default value : MULTIPURPOSE
+# Mandatory     : NO
+#-----------------------------------------------------------------------------
+databaseType=MULTIPURPOSE
