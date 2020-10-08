@@ -20,7 +20,7 @@
 - name: <r_common_t_common> run orainstRoot.sh and root.sh script
   command:
   become: yes
-  #become_method: su
+  become_method: su
   become_user: root
   #become_flags: "-s /bin/sh"
   args:
