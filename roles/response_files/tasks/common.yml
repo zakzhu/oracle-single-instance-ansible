@@ -5,6 +5,6 @@
     dest: /home/oracle/database/db_inst.rsp
     owner: oracle
     group: oinstall
-    mode: "0644"
+    mode: "0775"
     #validate:
     #backup: yes

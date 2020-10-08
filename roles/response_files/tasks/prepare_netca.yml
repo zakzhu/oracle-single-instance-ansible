@@ -9,7 +9,7 @@
     dest: "{{ oracle_home }}/"
     owner: oracle
     group: oinstall
-    mode: "0644"
+    mode: "0775"
     #backup: yes
     # The validation command to run before copying into place.
     # E.g. `validate: /usr/sbin/visudo -csf %s`
