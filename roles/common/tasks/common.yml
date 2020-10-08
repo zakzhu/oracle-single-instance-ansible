@@ -1,14 +1,14 @@
 ---
 # Below is a code example
 - name: <r_common_t_common> start oracle universal installer in silent mode
-  command:
+  shell:
   become: yes
   become_method: su
   become_user: oracle
   #become_flags: "-s /bin/sh"
   args:
-    cmd: ./runInstaller -silent -noconfig -noconsole -waitForCompletion -responseFile db_inst.rsp
-    chdir: "{{ unpacked_path }}/database"
+    cmd: "{{ unpacked_path }}/database/runInstaller -silent -noconfig -noconsole -waitForCompletion -responseFile {{ unpacked_path }}/database/db_inst.rsp"
+    #chdir:
     # A filename or (since 2.0) glob pattern.
     # If it already exists, this step *won't* be run.
     #creates:
@@ -18,7 +18,7 @@
     #remove:
 
 - name: <r_common_t_common> run orainstRoot.sh and root.sh script
-  command:
+  shell:
   become: yes
   become_method: su
   become_user: root
@@ -36,16 +36,17 @@
   loop:
     - "{{ oracle_base }}/../oraInventory/orainstRoot.sh"
     - "{{ oracle_home }}/root.sh"
+    - "ORACLE_HOME={{ oracle_home }};echo 'yes'|{{ oracle_home }}/suptools/tfa/release/tfa_home/install/roottfa.sh"
 
 - name: <r_common_t_common> run net configuration assistant in silent mode
-  command:
+  shell:
   become: yes
   become_method: su
   become_user: oracle
   #become_flags: "-s /bin/sh"
   args:
-    cmd: bin/netca -silent -responsefile netca.rsp
-    chdir: "{{ oracle_home }}"
+    cmd: "{{ oracle_home }}/bin/netca -silent -responsefile {{ oracle_home }}/netca.rsp"
+    #chdir:
     # A filename or (since 2.0) glob pattern.
     # If it already exists, this step *won't* be run.
     #creates:
@@ -55,14 +56,14 @@
     #remove:
 
 - name: <r_common_t_common> run database configuration assistant in silent mode
-  command:
+  shell:
   become: yes
   become_method: su
   become_user: oracle
   #become_flags: "-s /bin/sh"
   args:
-    cmd: bin/dbca -silent -responsefile dbca.rsp
-    chdir: "{{ oracle_home }}"
+    cmd: "{{ oracle_home }}/bin/dbca -silent -createDatabase -responseFile {{ oracle_home }}/dbca.rsp"
+    #chdir:
     # A filename or (since 2.0) glob pattern.
     # If it already exists, this step *won't* be run.
     #creates:

@@ -22,7 +22,7 @@
 - name: <r_get_software_t_local_copy> extract software package into unpacked path
   unarchive:
     src: "/tmp/{{ software_package }}"
-    dest: "{{ unpacked_path }}"
+    dest: "{{ unpacked_path }}/"
     owner: oracle
     group: oinstall
     mode: "0755"
