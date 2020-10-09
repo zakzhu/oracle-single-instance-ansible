@@ -1,7 +1,7 @@
 # @Author: Zak Zhu
 # @Date:   2020-10-05 14:57:45
 # @Last Modified by:   Zak Zhu
-# @Last Modified time: 2020-10-08 18:26:12
+# @Last Modified time: 2020-10-09 10:35:01
 ---
 - name: "{{ playbook_dir | basename }}"
   hosts: localhost
@@ -11,10 +11,10 @@
     status: "{{ ansible_local[stats_file_name]['status'] | default('0') }}"
   force_handlers: no
   pre_tasks:
-    - name: only collect the default minimum amount of facts
+    - name: update ansible facts
       setup:
         gather_subset:
-          - "hardware"
+          - "all"
 
     - when: status == '0'
       block:
