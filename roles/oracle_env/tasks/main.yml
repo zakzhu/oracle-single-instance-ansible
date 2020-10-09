@@ -1,0 +1,6 @@
+---
+# tasks file for roles/oracle_env
+
+- import_tasks: common.yml
+  tags:
+    - r_oracle_env_t_common
