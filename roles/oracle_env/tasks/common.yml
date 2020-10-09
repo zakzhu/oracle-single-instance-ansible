@@ -1,1 +1,10 @@
 ---
+- name: <r_oracle_env_t_common> template a file to /home/oracle/.bash_profile
+  template:
+    src: dot_bash_profile.j2
+    dest: /home/oracle/.bash_profile
+    owner: oracle
+    group: oinstall
+    mode: "0644"
+    #validate:
+    #backup: yes

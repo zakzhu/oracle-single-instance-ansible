@@ -1,2 +1,4 @@
 ---
 # defaults file for roles/oracle_env
+
+# FROM TASK: <r_oracle_env_t_common> template a file to /home/oracle/.bash_profile
