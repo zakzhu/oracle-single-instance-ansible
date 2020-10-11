@@ -1,36 +1,54 @@
-umask=022
+# .bash_profile
 
-export TMP=/tmp
-export LANG=en_US
-export TMPDIR=$TMP
-export ORACLE_UNQNAME=cdb1
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
 
-ORACLE_SID=cdb1; export ORACLE_SID
-ORACLE_BASE=/u01/app/oracle; export ORACLE_BASE
-ORACLE_HOME=$ORACLE_BASE/product/12.2.0/dbhome_1; export ORACLE_HOME
+# User specific environment and startup programs
 
-NLS_DATE_FORMAT="yyyy-mm-dd HH24:MI:SS"; export NLS_DATE_FORMAT
-NLS_LANG=AMERICAN_AMERICA.ZHS16GBK;export NLS_LANG
+PATH=$PATH:$HOME/.local/bin:$HOME/bin
+
+export PATH
+
+
+# =========================================================================
+# DEFAULT CONFIG ABOVE
+# =========================================================================
+
 
 PATH=.:$PATH:$HOME/.local/bin:$HOME/bin:$ORACLE_HOME/bin; export PATH
 
-THREADS_FLAG=native; export THREADS_FLAG
+# THREADS_FLAG=native; export THREADS_FLAG
 
-================================================
 umask 022
 
+export ORACLE_UNQNAME=cdb1
 export ORACLE_SID=PROD1
+
 export ORACLE_BASE=/u01/app/oracle
 export ORACLE_HOME=$ORACLE_BASE/product/12.2.0/db_1
+
 export LD_LIBRARY_PATH=$ORACLE_HOME/lib:/lib:/usr/lib
+
 export NLS_DATE_FORMAT="YYYY-MM-DD HH24:MI:SS"
+# NLS_DATE_FORMAT="yyyy-mm-dd HH24:MI:SS"; export NLS_DATE_FORMAT
+
+export LANG=en_US
+
 export TMP=/tmp
 export TMPDIR=$TMP
+
 export PATH=$ORACLE_HOME/bin:$ORACLE_HOME/OPatch:$PATH
+
 export TNS_ADMIN=$ORACLE_HOME/network/admin
+
 export ORACLE_PATH=.:$ORACLE_BASE/dba_scripts/sql:$ORACLE_HOME/rdbms/admin
+
 export SQLPATH=$ORACLE_HOME/sqlplus/admin
+
 export NLS_LANG="AMERICAN_CHINA.ZHS16GBK"
+# NLS_LANG=AMERICAN_AMERICA.ZHS16GBK;export NLS_LANG
 
 alias sqlplus='rlwrap sqlplus'
 alias rman='rlwrap rman'
