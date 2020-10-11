@@ -49,8 +49,10 @@ required_packages:
   - python-devel
   - readline-devel
   - redhat-lsb-core
+  - rlwrap
   - smartmontools
   - sysstat
+  - tree
   - unixODBC
   - unixODBC-devel
   - unzip
