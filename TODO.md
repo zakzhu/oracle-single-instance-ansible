@@ -9,7 +9,7 @@
 
 - 增加选择 non-cdb 或 cdb 的变量, response_files/templates/dbca.rsp.j2 中 createAsContainerDatabase 的值
 
-- 修改解压目录为 ORACLE_HOME/
+- 修改解压目录为 ORACLE_HOME/ https://docs.oracle.com/en/database/oracle/oracle-database/19/ladbi/running-oracle-universal-installer-to-install-oracle-database.html#GUID-DD4800E9-C651-4B08-A6AC-E5ECCC6512B9
 
 -
 
