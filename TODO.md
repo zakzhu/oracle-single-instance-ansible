@@ -7,6 +7,8 @@
 
 - common role 执行每个 rsp file 后, 增加 debug 输出 stdout 和 stderr
 
+- 增加选择 non-cdb 或 cdb 的变量, response_files/templates/dbca.rsp.j2 中 createAsContainerDatabase 的值
+
 -
 
 # 中后期需要做的
