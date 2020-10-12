@@ -6,37 +6,44 @@ if [ -f ~/.bashrc ]; then
 fi
 
 # User specific environment and startup programs
+umask 022
+LANG=en_US.UTF-8
+TMP=/tmp
+TMPDIR=$TMP
+
+NLS_DATE_FORMAT="YYYY-MM-DD HH24:MI:SS"
+NLS_LANG=AMERICAN_AMERICA.WE8MSWIN1252
+
+ORACLE_SID={{ oracle_sid }}
+
+ORACLE_BASE={{ oracle_base }}
+ORACLE_HOME={{ oracle_home }}
+
+
+
 
 PATH=$PATH:$HOME/.local/bin:$HOME/bin
 
+THREADS_FLAG=native
+
+export LANG TMP TMPDIR
+
+export 
+
 export PATH
 
+export THREADS_FLAG
 
-# =========================================================================
-# DEFAULT CONFIG ABOVE
-# =========================================================================
+# User specific aliases
+alias sqlplus='rlwrap sqlplus'
+alias rman='rlwrap rman'
+alias asmcmd='rlwrap asmcmd'
 
+#######################################################
 
-# PATH=.:$PATH:$HOME/.local/bin:$HOME/bin:$ORACLE_HOME/bin; export PATH
-
-# THREADS_FLAG=native; export THREADS_FLAG
-
-umask 022
-
-export ORACLE_SID=PROD1
-
-export ORACLE_BASE=/u01/app/oracle
-export ORACLE_HOME=$ORACLE_BASE/product/12.2.0/db_1
+# PATH=.:$PATH:$HOME/.local/bin:$HOME/bin:$ORACLE_HOME/bin
 
 export LD_LIBRARY_PATH=$ORACLE_HOME/lib:/lib:/usr/lib
-
-export NLS_DATE_FORMAT="YYYY-MM-DD HH24:MI:SS"
-# NLS_DATE_FORMAT="yyyy-mm-dd HH24:MI:SS"; export NLS_DATE_FORMAT
-
-export LANG=en_US
-
-export TMP=/tmp
-export TMPDIR=$TMP
 
 export PATH=$ORACLE_HOME/bin:$ORACLE_HOME/OPatch:$PATH
 
@@ -45,10 +52,3 @@ export TNS_ADMIN=$ORACLE_HOME/network/admin
 export ORACLE_PATH=.:$ORACLE_BASE/dba_scripts/sql:$ORACLE_HOME/rdbms/admin
 
 export SQLPATH=$ORACLE_HOME/sqlplus/admin
-
-export NLS_LANG="AMERICAN_CHINA.ZHS16GBK"
-# NLS_LANG=AMERICAN_AMERICA.ZHS16GBK;export NLS_LANG
-
-alias sqlplus='rlwrap sqlplus'
-alias rman='rlwrap rman'
-alias asmcmd='rlwrap asmcmd'
