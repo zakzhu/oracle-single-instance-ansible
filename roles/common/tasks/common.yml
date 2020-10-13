@@ -1,5 +1,4 @@
 ---
-# Below is a code example
 - name: <r_common_t_common> start oracle universal installer in silent mode
   shell:
   become: yes
@@ -7,7 +6,7 @@
   become_user: oracle
   #become_flags: "-s /bin/sh"
   args:
-    cmd: "{{ unpacked_path }}/database/runInstaller -force -silent -showProgress -waitForCompletion -noconfig -responseFile {{ unpacked_path }}/database/db_inst.rsp"
+    cmd: "{{ oracle_home }}/database/runInstaller -force -silent -showProgress -waitForCompletion -noconfig -responseFile {{ oracle_home }}/database/db_inst.rsp"
     #chdir:
     # A filename or (since 2.0) glob pattern.
     # If it already exists, this step *won't* be run.
@@ -16,16 +15,22 @@
     # A filename or (since 2.0) glob pattern.
     # If it already exists, this step *will* be run.
     #remove:
+  register: oui_result
   ignore_errors: yes
 
-- name: <r_common_t_common> run orainstRoot.sh and root.sh script
+- name: <r_common_t_common> print result of successful execution of rootInstaller command
+  debug:
+    msg: "{{ oui_result.stdout_lines }}"
+  when: oui_result.rc == '0'
+
+- name: <r_common_t_common> run orainstRoot.sh
   shell:
   become: yes
   become_method: su
   become_user: root
   #become_flags: "-s /bin/sh"
   args:
-    cmd: "{{ item }}"
+    cmd: "{{ oracle_base }}/../oraInventory/orainstRoot.sh"
     #chdir:
     # A filename or (since 2.0) glob pattern.
     # If it already exists, this step *won't* be run.
@@ -34,10 +39,37 @@
     # A filename or (since 2.0) glob pattern.
     # If it already exists, this step *will* be run.
     #remove:
-  loop:
-    - "{{ oracle_base }}/../oraInventory/orainstRoot.sh"
-    - "{{ oracle_home }}/root.sh"
+  register: orainst_root_result
   ignore_errors: yes
+
+- name: <r_common_t_common> print result of successful execution of orainstRoot.sh script
+  debug:
+    msg: "{{ orainst_root_result.stdout_lines }}"
+  when: orainst_root_result.rc == '0'
+
+- name: <r_common_t_common> run root.sh script
+  shell:
+  become: yes
+  become_method: su
+  become_user: root
+  #become_flags: "-s /bin/sh"
+  args:
+    cmd: "{{ oracle_home }}/root.sh"
+    #chdir:
+    # A filename or (since 2.0) glob pattern.
+    # If it already exists, this step *won't* be run.
+    #creates:
+
+    # A filename or (since 2.0) glob pattern.
+    # If it already exists, this step *will* be run.
+    #remove:
+  register: root_result
+  ignore_errors: yes
+
+- name: <r_common_t_common> print result of successful execution of root.sh script
+  debug:
+    msg: "{{ root_result.stdout_lines }}"
+  when: root_result.rc == '0'
 
 - name: <r_common_t_common> run net configuration assistant in silent mode
   shell:
@@ -55,7 +87,13 @@
     # A filename or (since 2.0) glob pattern.
     # If it already exists, this step *will* be run.
     #remove:
+  register: netca_result
   ignore_errors: yes
+
+- name: <r_common_t_common> print result of successful execution of netca command
+  debug:
+    msg: "{{ netca_result.stdout_lines }}"
+  when: netca_result.rc == '0'
 
 - name: <r_common_t_common> run database configuration assistant in silent mode
   shell:
@@ -73,4 +111,10 @@
     # A filename or (since 2.0) glob pattern.
     # If it already exists, this step *will* be run.
     #remove:
+  register: dbca_result
   ignore_errors: yes
+
+- name: <r_common_t_common> print result of successful execution of dbca command
+  debug:
+    msg: "{{ dbca_result.stdout_lines }}"
+  when: dbca_result.rc == '0'
