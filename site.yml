@@ -1,7 +1,7 @@
 # @Author: Zak Zhu
 # @Date:   2020-10-05 14:57:45
 # @Last Modified by:   Zak Zhu
-# @Last Modified time: 2020-10-09 10:35:01
+# @Last Modified time: 2020-10-13 15:58:53
 ---
 - name: "{{ playbook_dir | basename }}"
   hosts: localhost
@@ -85,6 +85,12 @@
             name: mount_points
           tags:
             - r_mount_points
+        - meta: flush_handlers
+
+        - import_role:
+            name: oracle_env
+          tags:
+            - r_oracle_env
         - meta: flush_handlers
 
         - import_role:
