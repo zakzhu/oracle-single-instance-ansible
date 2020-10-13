@@ -18,27 +18,27 @@ required_packages:
   - compat-gcc-44
   - compat-gcc-44-c++
   - compat-libcap1-1.10-*.el7.x86_64
-  - compat-libstdc++-33-3.2.3-*.el7.i686
+  # - compat-libstdc++-33-3.2.3-*.el7.i686
   - compat-libstdc++-33-3.2.3-*.el7.x86_64
   - cpp
   - dos2unix
   - gcc
   - gcc-c++
-  - glibc.i686
+  # - glibc.i686
   - glibc.x86_64
-  - glibc-devel.i686
+  # - glibc-devel.i686
   - glibc-devel.x86_64
   - glibc-utils
   - ksh
-  - libaio-0.3.109-*.el7.i686
+  # - libaio-0.3.109-*.el7.i686
   - libaio-0.3.109-*.el7.x86_64
-  - libaio-devel-0.3.109-*.el7.i686
+  # - libaio-devel-0.3.109-*.el7.i686
   - libaio-devel-0.3.109-*.el7.x86_64
-  - libgcc-4.8.5-*.el7.i686
+  # - libgcc-4.8.5-*.el7.i686
   - libgcc-4.8.5-*.el7.x86_64
-  - libstdc++-4.8.5-*.el7.i686
+  # - libstdc++-4.8.5-*.el7.i686
   - libstdc++-4.8.5-*.el7.x86_64
-  - libstdc++-devel-4.8.5-*.el7.i686
+  # - libstdc++-devel-4.8.5-*.el7.i686
   - libstdc++-devel-4.8.5-*.el7.x86_64
   - lrzsz
   - make
