@@ -7,6 +7,7 @@ fi
 
 # User specific environment and startup programs
 umask 022
+
 LANG=en_US.UTF-8
 TMP=/tmp
 TMPDIR=$TMP
@@ -19,36 +20,26 @@ ORACLE_SID={{ oracle_sid }}
 ORACLE_BASE={{ oracle_base }}
 ORACLE_HOME={{ oracle_home }}
 
-
-
+DBA_SCRIPTS=$ORACLE_BASE/dba_scripts/sql
+LD_LIBRARY_PATH=$ORACLE_HOME/lib
+NETWORK_ADMIN=$ORACLE_HOME/network/admin
+PATCH=$ORACLE_HOME/OPatch
+RDBMS_ADMIN=$ORACLE_HOME/rdbms/admin
+SQLPLUS_ADMIN=$ORACLE_HOME/sqlplus/admin
 
 PATH=$PATH:$HOME/.local/bin:$HOME/bin
+PATH=$PATH:$DBA_SCRIPTS:$LD_LIBRARY_PATH:$NETWORK_ADMIN:$PATCH:$RDBMS_ADMIN:$SQLPLUS_ADMIN
 
 THREADS_FLAG=native
 
 export LANG TMP TMPDIR
-
-export 
-
+export NLS_DATE_FORMAT NLS_LANG
+export ORACLE_SID
+export ORACLE_BASE ORACLE_HOME
 export PATH
-
 export THREADS_FLAG
 
 # User specific aliases
-alias sqlplus='rlwrap sqlplus'
-alias rman='rlwrap rman'
-alias asmcmd='rlwrap asmcmd'
-
-#######################################################
-
-# PATH=.:$PATH:$HOME/.local/bin:$HOME/bin:$ORACLE_HOME/bin
-
-export LD_LIBRARY_PATH=$ORACLE_HOME/lib:/lib:/usr/lib
-
-export PATH=$ORACLE_HOME/bin:$ORACLE_HOME/OPatch:$PATH
-
-export TNS_ADMIN=$ORACLE_HOME/network/admin
-
-export ORACLE_PATH=.:$ORACLE_BASE/dba_scripts/sql:$ORACLE_HOME/rdbms/admin
-
-export SQLPATH=$ORACLE_HOME/sqlplus/admin
+alias sqlplus="rlwrap sqlplus"
+alias rman="rlwrap rman"
+alias asmcmd="rlwrap asmcmd"
