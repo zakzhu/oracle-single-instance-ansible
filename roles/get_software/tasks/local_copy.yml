@@ -22,11 +22,11 @@
 - name: <r_get_software_t_local_copy> extract software package into unpacked path
   unarchive:
     src: "/tmp/{{ software_package }}"
-    dest: "{{ unpacked_path }}/"
+    dest: "{{ oracle_home }}/"
     owner: oracle
     group: oinstall
     mode: "0755"
     # If the specified absolute path (file or directory) already
     # exists, this step will *not* be run.
     # creates: DEST/src
-    creates: "{{ unpacked_path }}/database"
+    creates: "{{ oracle_home }}/database"

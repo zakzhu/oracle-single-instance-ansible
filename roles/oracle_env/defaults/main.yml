@@ -7,3 +7,5 @@ oracle_sid: DB1
 oracle_base: "{{ mount_map.pm1.point }}/app/oracle"
 
 oracle_version: "12.2.0"
+
+oracle_home: "{{ oracle_base }}/product/{{ oracle_version }}/dbhome_1"
