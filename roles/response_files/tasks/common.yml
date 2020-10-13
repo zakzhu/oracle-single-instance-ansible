@@ -2,7 +2,7 @@
 - name: <r_response_files_t_common> template a file to /home/oracle/database/db_inst.rsp
   template:
     src: db_inst.rsp.j2
-    dest: "{{ unpacked_path }}/database/db_inst.rsp"
+    dest: "{{ oracle_home }}/database/db_inst.rsp"
     owner: oracle
     group: oinstall
     mode: "0775"

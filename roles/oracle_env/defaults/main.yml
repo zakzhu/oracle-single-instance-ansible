@@ -2,7 +2,7 @@
 # defaults file for roles/oracle_env
 
 # FROM TASK: <r_oracle_env_t_common> template a file to /home/oracle/.bash_profile
-oracle_sid: DB1
+oracle_sid: TEST
 
 oracle_base: "{{ mount_map.pm1.point }}/app/oracle"
 

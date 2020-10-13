@@ -1,13 +1,13 @@
 ---
 # defaults file for response_files
 
-oracle_base: /u01/app/oracle
-oracle_home: /u01/app/oracle/product/12.2.0/dbhome_1
 oracle_edition: EE
 
-oracle_sid: cdb1
-oracle_pdb: pdb1
+enable_cdb: true
+oracle_pdb: PDB1
+
 oracle_pwd: oracle
+
 oracle_characterset: AL32UTF8
 
 mem_total_mb: "{{ ansible_facts['memtotal_mb'] }}"
