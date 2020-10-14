@@ -3,6 +3,6 @@
   file:
     path:
     state: directory
-    #owner:
-    #group:
+    owner: oracle
+    group: oinstall
     mode: "0755"
