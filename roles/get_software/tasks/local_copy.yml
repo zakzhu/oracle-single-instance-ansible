@@ -19,7 +19,7 @@
     msg: "The package is corrupted, please copy {{ software_package }} to /tmp again!" # not required. The customized message used for failing execution. If omitted, fail will simply bail out with a generic message.
   when: checksum_result.stdout != software_checksum
 
-- name: <r_get_software_t_local_copy> extract software package into unpacked path
+- name: "<r_get_software_t_local_copy> extract software package into {{ oracle_home }}/"
   unarchive:
     src: "/tmp/{{ software_package }}"
     dest: "{{ oracle_home }}/"
