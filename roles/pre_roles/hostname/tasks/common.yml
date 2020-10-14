@@ -8,10 +8,8 @@
     path: /etc/hosts
     state: present
     insertafter: EOF
-    line: |
-
-      {{ ansible_facts['default_ipv4']['address'] }}  {{ hostname }}
-
+    line: |-
+      {{ ansible_facts['default_ipv4']['address'] }} {{ hostname }}
     #backup: yes
 
     # The validation command to run before copying into place.
