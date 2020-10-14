@@ -10,4 +10,7 @@ software_package: linuxx64_12201_database.zip
 software_checksum: "4170261901 3453696911 linuxx64_12201_database.zip"
 
 # FROM TASK: "<r_get_software_t_local_copy> extract software package into {{ unpacked_path }}/"
+# References:
+# - [Running Oracle Database Setup Wizard to Install Oracle Database](https://docs.oracle.com/en/database/oracle/oracle-database/19/ladbi/running-oracle-universal-installer-to-install-oracle-database.html#GUID-DD4800E9-C651-4B08-A6AC-E5ECCC6512B9)
+# Note: Ensure that the Oracle home directory path you create is in compliance with the Oracle Optimal Flexible Architecture recommendations. Unzip the installation image files only to the Oracle home directory that you created.
 unpacked_path: "{{ oracle_home }}"

@@ -1,25 +1,12 @@
 # 接下来需要做的
 
-- 0 完善 oracle_env role
-  [About NLS_LANG Parameters](https://docs.oracle.com/html/B10131_02/gblsupp.htm)
-
 - sqlplus pretty output 配置, 以及考虑 sqlcl 工具
-
-- 0 common role 执行每个 rsp file 后, 增加 debug 输出 stdout 和 stderr
-
-- 0 增加选择 non-cdb 或 cdb 的变量, response_files/templates/dbca.rsp.j2 中 createAsContainerDatabase 的值
-
-- 0 修改解压目录为 ORACLE_HOME/ https://docs.oracle.com/en/database/oracle/oracle-database/19/ladbi/running-oracle-universal-installer-to-install-oracle-database.html#GUID-DD4800E9-C651-4B08-A6AC-E5ECCC6512B9
 
 -
 
 # 中后期需要做的
 
 - 统一变量取值
-
-- 0 rpm 依赖包精简, 删除无用的 32 位包
-  Starting with Oracle Database 11g Release 2 (11.2.0.2),
-  **all the 32-bit packages, except for gcc-32bit-4.3**, listed in the following table are no longer required for installing a database on Linux x86-64. Only the 64-bit packages are required.
 
 - 实现 common role 的 idempotent
 
