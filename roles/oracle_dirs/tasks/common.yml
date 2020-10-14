@@ -1,8 +1,12 @@
 ---
-- name: <r_oracle_dirs_t_common> create PATH directory
+- name: <r_oracle_dirs_t_common> create oracle required directories
   file:
-    path:
+    path: "{{ item }}"
     state: directory
     owner: oracle
     group: oinstall
-    mode: "0755"
+    mode: "0775"
+  loop:
+    - "{{ oracle_base }}"
+    - "{{ oracle_inventory }}"
+    - "{{ oracle_home }}"
