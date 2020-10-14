@@ -21,7 +21,7 @@
 - name: <r_common_t_common> print result of successful execution of rootInstaller command
   debug:
     msg: "{{ oui_result.stdout_lines }}"
-  when: oui_result.rc == '0'
+  when: oui_result.rc == 0
 
 - name: <r_common_t_common> run orainstRoot.sh
   shell:
@@ -45,7 +45,7 @@
 - name: <r_common_t_common> print result of successful execution of orainstRoot.sh script
   debug:
     msg: "{{ orainst_root_result.stdout_lines }}"
-  when: orainst_root_result.rc == '0'
+  when: orainst_root_result.rc == 0
 
 - name: <r_common_t_common> run root.sh script
   shell:
@@ -69,7 +69,7 @@
 - name: <r_common_t_common> print result of successful execution of root.sh script
   debug:
     msg: "{{ root_result.stdout_lines }}"
-  when: root_result.rc == '0'
+  when: root_result.rc == 0
 
 - name: <r_common_t_common> run net configuration assistant in silent mode
   shell:
@@ -93,7 +93,7 @@
 - name: <r_common_t_common> print result of successful execution of netca command
   debug:
     msg: "{{ netca_result.stdout_lines }}"
-  when: netca_result.rc == '0'
+  when: netca_result.rc == 0
 
 - name: <r_common_t_common> run database configuration assistant in silent mode
   shell:
@@ -117,4 +117,4 @@
 - name: <r_common_t_common> print result of successful execution of dbca command
   debug:
     msg: "{{ dbca_result.stdout_lines }}"
-  when: dbca_result.rc == '0'
+  when: dbca_result.rc == 0
