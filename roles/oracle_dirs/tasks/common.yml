@@ -1,0 +1,8 @@
+---
+- name: <r_oracle_dirs_t_common> create PATH directory
+  file:
+    path:
+    state: directory
+    #owner:
+    #group:
+    mode: "0755"
