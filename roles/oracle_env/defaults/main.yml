@@ -6,7 +6,7 @@ oracle_sid: TEST
 
 oracle_base: "{{ mount_map.pm1.point }}/app/oracle"
 
-oracle_inventory: "{{ oracle_inventory }}../oraInventory"
+oracle_inventory: "{{ oracle_base }}/../oraInventory"
 
 oracle_version: "12.2.0"
 
