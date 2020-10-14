@@ -30,7 +30,7 @@
   become_user: root
   #become_flags: "-s /bin/sh"
   args:
-    cmd: "{{ oracle_base }}/../oraInventory/orainstRoot.sh"
+    cmd: "{{ oracle_inventory }}/orainstRoot.sh"
     #chdir:
     # A filename or (since 2.0) glob pattern.
     # If it already exists, this step *won't* be run.
