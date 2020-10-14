@@ -5,7 +5,7 @@
     # directory are copied to destination.
     # if it does not end with "/", the directory itself
     # with all contents is copied.
-    src: netca.rsp
+    src: "{{ oracle_home }}/database/response/netca.rsp"
     dest: "{{ oracle_home }}/"
     owner: oracle
     group: oinstall
