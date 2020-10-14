@@ -8,3 +8,6 @@ software_package: linuxx64_12201_database.zip
 
 # FROM TASK: <r_get_software_t_local_copy> check the checksum of software package
 software_checksum: "4170261901 3453696911 linuxx64_12201_database.zip"
+
+# FROM TASK: "<r_get_software_t_local_copy> extract software package into {{ unpacked_path }}/"
+unpacked_path: "{{ oracle_home }}"

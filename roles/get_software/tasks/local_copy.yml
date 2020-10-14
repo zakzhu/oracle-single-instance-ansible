@@ -19,14 +19,14 @@
     msg: "The package is corrupted, please copy {{ software_package }} to /tmp again!" # not required. The customized message used for failing execution. If omitted, fail will simply bail out with a generic message.
   when: checksum_result.stdout != software_checksum
 
-- name: "<r_get_software_t_local_copy> extract software package into {{ oracle_home }}/"
+- name: "<r_get_software_t_local_copy> extract software package into {{ unpacked_path }}/"
   unarchive:
     src: "/tmp/{{ software_package }}"
-    dest: "{{ oracle_home }}/"
+    dest: "{{ unpacked_path }}/"
     owner: oracle
     group: oinstall
     mode: "0755"
     # If the specified absolute path (file or directory) already
     # exists, this step will *not* be run.
     # creates: DEST/src
-    creates: "{{ oracle_home }}/database"
+    creates: "{{ unpacked_path }}/database"
