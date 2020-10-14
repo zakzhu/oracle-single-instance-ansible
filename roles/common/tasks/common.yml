@@ -1,4 +1,15 @@
 ---
+- name: <r_common_t_common> remove /etc/oraInst.loc file
+  file:
+    path: /etc/oraInst.loc
+    state: absent
+
+- name: <r_common_t_common> make sure new oracle sid is not in /etc/oratab
+  lineinfile:
+    path: /etc/oratab
+    state: absent
+    regexp: "^{{ oracle_sid }}"
+
 - name: <r_common_t_common> start oracle universal installer in silent mode
   shell:
   become: yes
@@ -18,10 +29,16 @@
   register: oui_result
   ignore_errors: yes
 
-- name: <r_common_t_common> print result of successful execution of rootInstaller command
+- name: <r_common_t_common> print output of rootInstaller command execution
   debug:
-    msg: "{{ oui_result.stdout_lines }}"
-  when: oui_result.rc == 0
+    msg: |
+      {%- if oui_result.rc == 0 -%}
+        {{ oui_result.stdout_lines }}
+      {%- elif oui_result.rc != 0 -%}
+        {{ oui_result.stderr_lines }}
+      {%- endif -%}
+  ignore_errors: yes
+  failed_when: oui_result.rc != 0
 
 - name: <r_common_t_common> run orainstRoot.sh
   shell:
@@ -42,10 +59,16 @@
   register: orainst_root_result
   ignore_errors: yes
 
-- name: <r_common_t_common> print result of successful execution of orainstRoot.sh script
+- name: <r_common_t_common> print output of orainstRoot.sh script execution
   debug:
-    msg: "{{ orainst_root_result.stdout_lines }}"
-  when: orainst_root_result.rc == 0
+    msg: |
+      {%- if orainst_root_result.rc == 0 -%}
+        {{ orainst_root_result.stdout_lines }}
+      {%- elif orainst_root_result.rc != 0 -%}
+        {{ orainst_root_result.stderr_lines }}
+      {%- endif -%}
+  ignore_errors: yes
+  failed_when: orainst_root_result.rc != 0
 
 - name: <r_common_t_common> run root.sh script
   shell:
@@ -66,10 +89,16 @@
   register: root_result
   ignore_errors: yes
 
-- name: <r_common_t_common> print result of successful execution of root.sh script
+- name: <r_common_t_common> print output of root.sh script execution
   debug:
-    msg: "{{ root_result.stdout_lines }}"
-  when: root_result.rc == 0
+    msg: |
+      {%- if root_result.rc == 0 -%}
+        {{ root_result.stdout_lines }}
+      {%- elif root_result.rc != 0 -%}
+        {{ root_result.stderr_lines }}
+      {%- endif -%}
+  ignore_errors: yes
+  failed_when: root_result.rc != 0
 
 - name: <r_common_t_common> run net configuration assistant in silent mode
   shell:
@@ -90,10 +119,16 @@
   register: netca_result
   ignore_errors: yes
 
-- name: <r_common_t_common> print result of successful execution of netca command
+- name: <r_common_t_common> print output of netca command execution
   debug:
-    msg: "{{ netca_result.stdout_lines }}"
-  when: netca_result.rc == 0
+    msg: |
+      {%- if netca_result.rc == 0 -%}
+        {{ netca_result.stdout_lines }}
+      {%- elif netca_result.rc != 0 -%}
+        {{ netca_result.stderr_lines }}
+      {%- endif -%}
+  ignore_errors: yes
+  failed_when: netca_result.rc != 0
 
 - name: <r_common_t_common> run database configuration assistant in silent mode
   shell:
@@ -114,7 +149,13 @@
   register: dbca_result
   ignore_errors: yes
 
-- name: <r_common_t_common> print result of successful execution of dbca command
+- name: <r_common_t_common> print output of dbca command execution
   debug:
-    msg: "{{ dbca_result.stdout_lines }}"
-  when: dbca_result.rc == 0
+    msg: |
+      {%- if dbca_result.rc == 0 -%}
+        {{ dbca_result.stdout_lines }}
+      {%- elif dbca_result.rc != 0 -%}
+        {{ dbca_result.stderr_lines }}
+      {%- endif -%}
+  ignore_errors: yes
+  failed_when: dbca_result.rc != 0
