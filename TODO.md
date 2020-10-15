@@ -2,6 +2,8 @@
 
 - sqlplus pretty output 配置, 以及考虑 sqlcl 工具
 
+- sqlplus or sqlcl 实现 tab 命令补全
+
 -
 
 # 中后期需要做的
