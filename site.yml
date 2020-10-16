@@ -1,7 +1,7 @@
 # @Author: Zak Zhu
 # @Date:   2020-10-05 14:57:45
 # @Last Modified by:   Zak Zhu
-# @Last Modified time: 2020-10-14 10:43:41
+# @Last Modified time: 2020-10-16 17:37:23
 ---
 - name: "{{ playbook_dir | basename }}"
   hosts: localhost
@@ -121,6 +121,12 @@
             name: common
           tags:
             - r_common
+        - meta: flush_handlers
+
+        - import_role:
+            name: oracle_login
+          tags:
+            - r_oracle_login
         - meta: flush_handlers
 
   post_tasks:

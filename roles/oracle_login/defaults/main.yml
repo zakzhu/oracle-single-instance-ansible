@@ -1,0 +1,7 @@
+---
+# defaults file for oracle_login
+
+# FROM TASK: <r_oracle_login_t_common> create two symbolic links
+glogin_link_targets:
+  - "{{ oracle_home }}/sqlplus/admin/glogin.sql"
+  - "{{ sql_home }}/glogin.sql"

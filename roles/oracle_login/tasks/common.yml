@@ -1,0 +1,31 @@
+---
+- name: <r_oracle_login_t_common> remove default glogin.sql
+  file:
+    path: "{{ oracle_home }}/sqlplus/admin/glogin.sql"
+    state: absent
+
+- name: <r_oracle_login_t_common> copy a file to login/glogin.sql
+  copy:
+    # if path ends with "/", only inside contents of that
+    # directory are copied to destination.
+    # if it does not end with "/", the directory itself
+    # with all contents is copied.
+    src: glogin.sql
+    dest: "{{ oracle_home }}/login/glogin.sql"
+    owner: oracle
+    group: oinstall
+    mode: "0644"
+    #backup: yes
+    # The validation command to run before copying into place.
+    # E.g. `validate: /usr/sbin/visudo -csf %s`
+    #validate:
+
+- name: <r_oracle_login_t_common> create two symbolic links
+  file:
+    src: "{{ oracle_home }}/login/glogin.sql"
+    dest: "{{ item }}"
+    owner: oracle
+    group: oinstall
+    mode: "0644"
+    state: link
+  loop: "{{ glogin_link_targets }}"
