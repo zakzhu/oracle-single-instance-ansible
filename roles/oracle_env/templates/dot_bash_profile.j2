@@ -8,6 +8,7 @@ fi
 # User specific environment and startup programs
 umask 022
 
+EDITOR=vim
 LANG=en_US.UTF-8
 TMP=/tmp
 TMPDIR=$TMP
@@ -35,7 +36,7 @@ PATH=$PATH:$JAVA_HOME/bin
 
 THREADS_FLAG=native
 
-export LANG TMP TMPDIR
+export EDITOR LANG TMP TMPDIR
 export NLS_DATE_FORMAT NLS_LANG
 export ORACLE_SID
 export ORACLE_BASE ORACLE_INVENTORY ORACLE_HOME JAVA_HOME
