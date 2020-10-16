@@ -1,5 +1,5 @@
 ---
-- name: <r_oracle_login_t_common> remove default glogin.sql
+- name: <r_oracle_login_t_common> remove origin glogin.sql
   file:
     path: "{{ oracle_home }}/sqlplus/admin/glogin.sql"
     state: absent
