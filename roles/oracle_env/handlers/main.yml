@@ -1,2 +1,4 @@
 ---
 # handlers file for roles/oracle_env
+
+- import_tasks: from_common.yml

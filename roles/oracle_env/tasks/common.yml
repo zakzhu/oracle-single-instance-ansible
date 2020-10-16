@@ -8,3 +8,4 @@
     mode: "0644"
     #validate:
     #backup: yes
+  notify: "({{ role_name }}) source .bash_profile"
