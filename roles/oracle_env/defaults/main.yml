@@ -11,3 +11,5 @@ oracle_inventory: "{{ oracle_base }}/../oraInventory"
 oracle_version: "12.2.0"
 
 oracle_home: "{{ oracle_base }}/product/{{ oracle_version }}/dbhome_1"
+
+sql_home: "{{ oracle_home }}/sqldeveloper/sqlcl"
