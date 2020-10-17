@@ -4,11 +4,11 @@
     path: /etc/oraInst.loc
     state: absent
 
-- name: <r_common_t_common> make sure new oracle sid is not in /etc/oratab
-  lineinfile:
-    path: /etc/oratab
-    state: absent
-    regexp: "^{{ oracle_sid }}"
+# - name: <r_common_t_common> make sure new oracle sid is not in /etc/oratab
+#   lineinfile:
+#     path: /etc/oratab
+#     state: absent
+#     regexp: "^{{ oracle_sid }}"
 
 - name: <r_common_t_common> start oracle universal installer in silent mode
   shell:
@@ -28,12 +28,17 @@
     #remove:
   register: oui_result
   ignore_errors: yes
+  failed_when:
+    - oui_result.rc != 0
+    - oui_result.rc != 254
 
 - name: <r_common_t_common> print output of rootInstaller command execution
   debug:
     msg: "{{ oui_result.stdout_lines }}"
   ignore_errors: yes
-  failed_when: oui_result.rc != 0
+  failed_when:
+    - oui_result.rc != 0
+    - oui_result.rc != 254
 
 - name: <r_common_t_common> run orainstRoot.sh
   shell:
@@ -128,9 +133,14 @@
     #remove:
   register: dbca_result
   ignore_errors: yes
+  failed_when:
+    - dbca_result.rc != 0
+    - dbca_result.rc != 254
 
 - name: <r_common_t_common> print output of dbca command execution
   debug:
     msg: "{{ dbca_result.stdout_lines }}"
   ignore_errors: yes
-  failed_when: dbca_result.rc != 0
+  failed_when:
+    - dbca_result.rc != 0
+    - dbca_result.rc != 254

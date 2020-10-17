@@ -4,7 +4,7 @@ set classic on
 
 set exitcommit off
 
-set history backlist history
+set history blacklist history
 set history limit 1000
 set history nofails
 
