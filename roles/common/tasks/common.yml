@@ -31,12 +31,7 @@
 
 - name: <r_common_t_common> print output of rootInstaller command execution
   debug:
-    msg: |
-      {%- if oui_result.rc == 0 -%}
-        {{ oui_result.stdout_lines }}
-      {%- elif oui_result.rc != 0 -%}
-        {{ oui_result.stderr_lines }}
-      {%- endif -%}
+    msg: "{{ oui_result.stdout_lines }}"
   ignore_errors: yes
   failed_when: oui_result.rc != 0
 
@@ -61,12 +56,7 @@
 
 - name: <r_common_t_common> print output of orainstRoot.sh script execution
   debug:
-    msg: |
-      {%- if orainst_root_result.rc == 0 -%}
-        {{ orainst_root_result.stdout_lines }}
-      {%- elif orainst_root_result.rc != 0 -%}
-        {{ orainst_root_result.stderr_lines }}
-      {%- endif -%}
+    msg: "{{ orainst_root_result.stdout_lines }}"
   ignore_errors: yes
   failed_when: orainst_root_result.rc != 0
 
@@ -91,12 +81,7 @@
 
 - name: <r_common_t_common> print output of root.sh script execution
   debug:
-    msg: |
-      {%- if root_result.rc == 0 -%}
-        {{ root_result.stdout_lines }}
-      {%- elif root_result.rc != 0 -%}
-        {{ root_result.stderr_lines }}
-      {%- endif -%}
+    msg: "{{ root_result.stdout_lines }}"
   ignore_errors: yes
   failed_when: root_result.rc != 0
 
@@ -121,12 +106,7 @@
 
 - name: <r_common_t_common> print output of netca command execution
   debug:
-    msg: |
-      {%- if netca_result.rc == 0 -%}
-        {{ netca_result.stdout_lines }}
-      {%- elif netca_result.rc != 0 -%}
-        {{ netca_result.stderr_lines }}
-      {%- endif -%}
+    msg: "{{ netca_result.stdout_lines }}"
   ignore_errors: yes
   failed_when: netca_result.rc != 0
 
@@ -151,11 +131,6 @@
 
 - name: <r_common_t_common> print output of dbca command execution
   debug:
-    msg: |
-      {%- if dbca_result.rc == 0 -%}
-        {{ dbca_result.stdout_lines }}
-      {%- elif dbca_result.rc != 0 -%}
-        {{ dbca_result.stderr_lines }}
-      {%- endif -%}
+    msg: "{{ dbca_result.stdout_lines }}"
   ignore_errors: yes
   failed_when: dbca_result.rc != 0
