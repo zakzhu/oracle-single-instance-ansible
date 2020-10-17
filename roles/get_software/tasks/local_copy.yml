@@ -7,7 +7,7 @@
     chdir: /tmp
     # A filename or (since 2.0) glob pattern.
     # If it already exists, this step *won't* be run.
-    #creates:
+    creates: "{{ unpacked_path }}/database"
 
     # A filename or (since 2.0) glob pattern.
     # If it already exists, this step *will* be run.
@@ -17,7 +17,9 @@
 - name: <r_get_software_t_local_copy> check the checksum of software package
   fail:
     msg: "The package is corrupted, please copy {{ software_package }} to /tmp again!" # not required. The customized message used for failing execution. If omitted, fail will simply bail out with a generic message.
-  when: checksum_result.stdout != software_checksum
+  when:
+    - checksum_result.stdout | regex_search('(skipped)') == ''
+    - checksum_result.stdout != software_checksum
 
 - name: "<r_get_software_t_local_copy> extract software package into {{ unpacked_path }}/"
   unarchive:
