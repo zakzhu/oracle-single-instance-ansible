@@ -8,6 +8,6 @@ set history blacklist history
 set history limit 1000
 set history nofails
 
-set null null
+set null NULL
 
 set sqlformat ansiconsole
