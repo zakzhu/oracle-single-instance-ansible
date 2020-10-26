@@ -11,3 +11,5 @@ set history nofails
 set null NULL
 
 set sqlformat ansiconsole
+
+set timing on
