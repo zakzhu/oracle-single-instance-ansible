@@ -1,6 +1,10 @@
+alter session set nls_date_format='yyyy-mm-dd hh24:mi:ss';
+
 set autocommit off
 
 set classic on
+
+set ddl pretty on
 
 set exitcommit off
 
@@ -12,4 +16,5 @@ set null NULL
 
 set sqlformat ansiconsole
 
+set time on
 set timing on
