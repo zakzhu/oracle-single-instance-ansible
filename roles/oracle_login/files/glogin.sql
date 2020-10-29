@@ -9,7 +9,7 @@ set ddl pretty on
 set exitcommit off
 
 set history blacklist history
-set history limit 1000
+set history limit 2000
 set history nofails
 
 set null NULL
