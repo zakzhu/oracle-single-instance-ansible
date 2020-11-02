@@ -14,6 +14,8 @@ set history nofails
 
 set null NULL
 
+set serveroutput on
+
 set sqlformat ansiconsole
 
 set time on
