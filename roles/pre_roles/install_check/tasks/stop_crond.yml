@@ -13,5 +13,5 @@
     name: crond
     # Choices: reloaded, restarted, started, stopped
     state: stopped
-    #enabled:
+    enabled: yes
     #daemon_reload: yes
