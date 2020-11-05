@@ -33,5 +33,4 @@
     mode: "0755"
     # If the specified absolute path (file or directory) already
     # exists, this step will *not* be run.
-    # creates: DEST/src
     creates: "{{ unpacked_path }}/database"
